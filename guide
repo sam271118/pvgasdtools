@@ -1,0 +1,26 @@
+Để nâng phiên bản ứng dụng, bạn cần thực hiện ở 3 nơi (iOS, Android và file điều khiển trên GitHub):
+
+1. Trên iOS (Xcode)
+Mở dự án trong Xcode.
+Chọn Target có tên Test App 1.
+Vào tab General -> Mục Identity.
+Thay đổi số tại ô Version (ví dụ từ 1.0.0 thành 1.1.0).
+Lưu ý: Bạn cũng nên tăng số Build mỗi khi phát hành bản mới.
+2. Trên Android (Android Studio)
+Mở file android/app/build.gradle.
+Tìm đoạn mã defaultConfig { ... }.
+Thay đổi giá trị của versionName (ví dụ: versionName "1.1.0").
+Lưu ý: Bạn cũng cần tăng versionCode (phải là số nguyên, ví dụ từ 1 lên 2).
+3. Trên GitHub (Để kích hoạt Force Update)
+Mở file version trên GitHub repo của bạn.
+Cập nhật giá trị min_version hoặc latest_version tương ứng:
+json
+"ios": {
+  "min_version": "1.1.0", // Nâng con số này nếu muốn bắt buộc người dùng bản cũ phải cập nhật
+  ...
+}
+Quy trình chuẩn:
+
+Bạn nâng version trong Xcode/Android Studio và đóng gói (build/archive) ứng dụng.
+Sau khi ứng dụng mới đã sẵn sàng trên Store, bạn mới lên GitHub để nâng min_version. Ngay lập tức, những ai đang dùng bản cũ sẽ thấy màn hình yêu cầu cập nhật.
+
